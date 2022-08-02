@@ -5,7 +5,7 @@ signal quitarvida
 
 signal spawn_laser(location)
 var shoot =1
-var speed = 300
+var speed = 450
 var hp = 3
 
 var input_vector = Vector2.ZERO
