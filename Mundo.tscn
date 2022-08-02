@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://EnemySpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://f6068ccdfbac90c1e87a291c47d5049b.jpg" type="Texture" id=3]
+[ext_resource path="res://Mundo.gd" type="Script" id=4]
+[ext_resource path="res://Powerup.tscn" type="PackedScene" id=5]
+
+[node name="Mundo" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( 270.5, 361.5 )
+scale = Vector2( 0.190625, 0.403889 )
+texture = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 269, 638 )
+
+[node name="EnemySpawner" parent="." instance=ExtResource( 2 )]
+
+[node name="Score" type="Label" parent="."]
+margin_left = 43.0
+margin_top = 34.0
+margin_right = 141.0
+margin_bottom = 96.0
+text = "SCORE:"
+
+[node name="HP" type="Label" parent="."]
+margin_left = 20.0
+margin_top = 624.0
+margin_right = 79.0
+margin_bottom = 646.0
+text = "HP: 3"
+
+[node name="Powerup" parent="." instance=ExtResource( 5 )]
+position = Vector2( 324, 502 )
+
+[node name="Powerup2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 119, 546 )
+
+[connection signal="quitarvida" from="Player" to="." method="_on_Player_quitarvida"]
+[connection signal="spawn_laser" from="Player" to="." method="_on_Player_spawn_laser"]
+[connection signal="add_score" from="EnemySpawner" to="." method="score"]
